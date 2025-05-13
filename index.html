@@ -2,24 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Você me ama?</title>
   <style>
     body {
       font-family: sans-serif;
       background: pink;
       text-align: center;
-      margin-top: 100px;
-      position: relative;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
     }
 
     #questionContainer {
       position: relative;
+      width: 100%;
       height: 300px;
+      max-width: 400px;
+      margin: 2rem auto;
     }
 
     button {
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 12px 24px;
+      font-size: 1rem;
       position: absolute;
       transition: 0.3s;
       border: none;
@@ -31,18 +39,24 @@
     }
 
     #yesBtn {
-      left: 40%;
-      top: 60%;
+      left: 25%;
+      top: 65%;
     }
 
     #noBtn {
       left: 55%;
-      top: 60%;
+      top: 65%;
     }
 
     #heartLoader, #resultContainer {
       display: none;
       margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+    img {
+      max-width: 80%;
+      height: auto;
     }
   </style>
 </head>
@@ -56,7 +70,7 @@
 
   <div id="heartLoader">paraíba</div>
   <div id="resultContainer">
-    <h2>Eu também te amo!</h2>
+    <h2>Eu também te amo</h2>
   </div>
 
   <script>
@@ -68,8 +82,8 @@
     const gifResult = document.getElementById("gifResult");
 
     noBtn.addEventListener("mouseover", () => {
-      const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
-      const newY = Math.floor(Math.random() * questionContainer.offsetHeight);
+      const newX = Math.floor(Math.random() * (questionContainer.offsetWidth - noBtn.offsetWidth));
+      const newY = Math.floor(Math.random() * (questionContainer.offsetHeight - noBtn.offsetHeight));
       noBtn.style.left = `${newX}px`;
       noBtn.style.top = `${newY}px`;
     });
