@@ -1,41 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Você me ama?</title>
   <style>
     body {
       font-family: sans-serif;
       background: pink;
-      margin: 0;
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-    }
-
-    h1 {
-      font-size: 2rem;
       text-align: center;
+      margin-top: 100px;
+      position: relative;
     }
 
     #questionContainer {
       position: relative;
-      width: 100%;
-      max-width: 320px;
       height: 300px;
-      margin: 2rem 0;
-      background-color: rgba(255,255,255,0.2);
-      border-radius: 20px;
-      overflow: hidden;
     }
 
     button {
       padding: 10px 20px;
-      font-size: 1rem;
+      font-size: 16px;
       position: absolute;
       transition: 0.3s;
       border: none;
@@ -47,24 +31,18 @@
     }
 
     #yesBtn {
-      left: 30%;
-      top: 70%;
+      left: 40%;
+      top: 60%;
     }
 
     #noBtn {
-      left: 60%;
-      top: 70%;
+      left: 55%;
+      top: 60%;
     }
 
     #heartLoader, #resultContainer {
       display: none;
       margin-top: 20px;
-      text-align: center;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
     }
   </style>
 </head>
@@ -76,9 +54,12 @@
     <button id="noBtn">Não</button>
   </div>
 
-  <div id="heartLoader">hahahha</div>
+  <div id="heartLoader">hahahah</div>
   <div id="resultContainer">
     <h2>Eu também te amo!</h2>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTQxZnd3dG9zNms4a3NjbmpuMmR4aDhsdnlpc2Nybm4wMTR0ZjdqdiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/X8M6xJ5r1gKek/giphy.gif" width="200" id="gifResult">
+  </div>
+
   <script>
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
@@ -87,18 +68,11 @@
     const resultContainer = document.getElementById("resultContainer");
     const gifResult = document.getElementById("gifResult");
 
-    function moveNoButton() {
-      const containerWidth = questionContainer.offsetWidth - noBtn.offsetWidth;
-      const containerHeight = questionContainer.offsetHeight - noBtn.offsetHeight;
-      const newX = Math.floor(Math.random() * containerWidth);
-      const newY = Math.floor(Math.random() * containerHeight);
+    noBtn.addEventListener("mouseover", () => {
+      const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+      const newY = Math.floor(Math.random() * questionContainer.offsetHeight);
       noBtn.style.left = `${newX}px`;
       noBtn.style.top = `${newY}px`;
-    }
-
-    // Faz o botão "Não" fugir com qualquer tipo de interação
-    ["mouseover", "mousedown", "touchstart"].forEach(eventType => {
-      noBtn.addEventListener(eventType, moveNoButton);
     });
 
     yesBtn.addEventListener("click", () => {
